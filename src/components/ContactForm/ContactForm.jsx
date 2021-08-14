@@ -17,7 +17,7 @@ function ContactForm({ contacts, onSubmit }) {
   const handleFormSubmit = e => {
     e.preventDefault();
     if (
-      store
+      store.store
         .getState()
         .contacts.contactsArr.find(contact => contact.name === name)
     ) {
