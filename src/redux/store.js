@@ -1,5 +1,4 @@
-import { createStore, combineReducers } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore } from "@reduxjs/toolkit";
 import contactsReducer from "./contacts-reducer";
 
 // const initialState = {
@@ -7,9 +6,16 @@ import contactsReducer from "./contacts-reducer";
 //   filter: "",
 // };
 
-const rootReducer = combineReducers({
-  contacts: contactsReducer,
-});
+//Было
+// const rootReducer = combineReducers({
+//   contacts: contactsReducer,
+// });
+// const store = createStore(rootReducer, composeWithDevTools());
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+  },
+  devTools: process.env.NODE_ENV === "development", //devtools будут только во время разработки
+});
 export default store;
